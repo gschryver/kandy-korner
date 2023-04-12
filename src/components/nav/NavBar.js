@@ -18,17 +18,24 @@ export const NavBar = () => {
       )}
 
       {currentUser ? (
-        // If a user is logged in, render a "Logout" link
-        <li className="navbar__item navbar__logout">
-        <Link className="navbar__link"
-            to=""
-            onClick={() => {
-              localStorage.removeItem("kandy_user");
-              navigate("/", { replace: true });
-            }}
-          >Logout
-        </Link>
-        </li>
+        <>
+          {/* Display the user's email */}
+          <li className="navbar__item">
+            <span className="navbar__user-email">Logged in as: {currentUser.email}</span>
+          </li>
+
+          {/* If a user is logged in, render a "Logout" link */}
+          <li className="navbar__item navbar__logout">
+          <Link className="navbar__link"
+              to=""
+              onClick={() => {
+                localStorage.removeItem("kandy_user");
+                navigate("/", { replace: true });
+              }}
+            >Logout
+          </Link>
+          </li>
+        </>
       
       ) : (
         // If no user is logged in, render an empty string
