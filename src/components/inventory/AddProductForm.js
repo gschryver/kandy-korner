@@ -80,5 +80,5 @@ export const AddProductForm = () => {
       </div>
       <button type="submit">Add Product</button>
     </form>
-  );
-};
+  )
+}
