@@ -14,7 +14,7 @@ export const NavBar = () => {
 
       {isStaff && (
         // Only display "Add Product" link if the current user is a staff member
-        <li className="navbar__item active"><Link className="navbar__link" to="/inventory/new">Add Product</Link></li>
+        <li className="navbar__item active"><Link className="navbar__link" to="/addProduct">Add Product</Link></li>
       )}
 
       {currentUser ? (
