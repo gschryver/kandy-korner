@@ -18,7 +18,7 @@ export const ApplicationViews = () => {
       >
         <Route path="locations" element={<LocationList />} />
         <Route path="inventory" element={<InventoryList />} />
-        {isStaff && (<Route path="inventory/new" element={<AddProductForm />} />)} {/* new product form is only displayed to employees */}
+        {isStaff && (<Route path="addProduct" element={<AddProductForm />} />)} {/* new product form is only displayed to employees */}
       </Route>
     </Routes>
   )
