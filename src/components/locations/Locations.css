@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-family: "Comfortaa", Arial, Helvetica, sans-serif;
+}
+
+.locationName {
+    margin-bottom: 0;    
+}
+
+.locationInfoLabel {
+    font-size: 16px;
+}
+
+.pageTitle {
+    font-size: 30px;
+}

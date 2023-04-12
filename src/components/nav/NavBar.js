@@ -9,6 +9,11 @@ export const NavBar = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/locations">Locations</Link>
             </li>
+
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/inventory">Inventory</Link>
+            </li>
+
             
             {
                 localStorage.getItem("kandy_user") ? (

@@ -1,5 +1,7 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { LocationList } from "../locations/Locations"
+import { InventoryList } from "../inventory/Inventory"
+
 
 
 export const ApplicationViews = () => {
@@ -14,7 +16,8 @@ export const ApplicationViews = () => {
                 </>
             }>
 
-                <Route path="locations" element={ <LocationList /> } /> 
+                <Route path="locations" element={ <LocationList /> } />
+                <Route path="inventory" element={ <InventoryList /> } />
             </Route>
         </Routes>
     )
