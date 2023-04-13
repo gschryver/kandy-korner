@@ -16,8 +16,8 @@ export const CustomerNav = () => {
             </li>
 
             <li className="navbar__item active">
-        <Link className="navbar__link" to="/candy">Find Candy</Link>
-      </li>
+                <Link className="navbar__link" to="/candy">Find Candy</Link>
+            </li>
 
             {currentUser ? (
                 <>

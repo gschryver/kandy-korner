@@ -16,8 +16,12 @@ export const EmployeeNav = () => {
             </li>
 
             <li className="navbar__item active">
-    <Link className="navbar__link" to="/addProduct">Add Product</Link>
-</li>
+                <Link className="navbar__link" to="inventory/addProduct">Add Product</Link>
+            </li>
+
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/candy">Find Candy</Link>
+            </li>
 
 
 

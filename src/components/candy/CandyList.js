@@ -5,25 +5,29 @@ const CandyList = ({ searchTerm }) => {
   const [locationsData, setLocationsData] = useState([]) // locations data
 
   useEffect(() => {
-    // fetch candy data and filter by search term
-    fetch("http://localhost:8088/inventory")
-      .then((response) => response.json())
-      .then((jsonData) => {
-        const filteredCandy = jsonData.filter((candy) =>
-          candy.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-        )
-        setCandyData(filteredCandy)
-      })
-      .catch((error) => console.error("Error fetching data:", error))
-
+    // Check if searchTerm exists before trying to access its properties
+    if (searchTerm) {
+      // fetch candy data and filter by search term
+      fetch("http://localhost:8088/inventory")
+        .then((response) => response.json())
+        .then((jsonData) => {
+          const filteredCandy = jsonData.filter((candy) =>
+            candy.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+          );
+          setCandyData(filteredCandy);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+  
     // fetch locations data
     fetch("http://localhost:8088/locations")
       .then((response) => response.json())
       .then((jsonData) => {
-        setLocationsData(jsonData)
+        setLocationsData(jsonData);
       })
-      .catch((error) => console.error("Error fetching data:", error))
-  }, [searchTerm])
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [searchTerm]);
+  
 
   // function to render locations based on location ids
   const renderLocations = (locationIds) => {
