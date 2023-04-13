@@ -23,6 +23,10 @@ export const EmployeeNav = () => {
                 <Link className="navbar__link" to="/candy">Find Candy</Link>
             </li>
 
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="employees">Hire Employee</Link>
+            </li>
+
 
 
             {currentUser ? (
