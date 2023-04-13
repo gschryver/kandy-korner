@@ -34,7 +34,7 @@ export const AddProductForm = () => {
     }
 
     fetch("http://localhost:8088/inventory", requestOptions)
-    navigate("/addProduct")
+    navigate("/inventory")
   }
 
   return (
