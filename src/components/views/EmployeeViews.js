@@ -1,9 +1,10 @@
-import { Outlet, Route, Routes, Navigate } from "react-router-dom";
-import { LocationList } from "../locations/Locations";
-import { InventoryList } from "../inventory/Inventory";
-import { CandyContainer } from "../candy/CandyContainer";
-import { AddProductForm } from "../inventory/AddProductForm";
-import { EmployeeList } from "../employees/EmployeeList";
+import { Outlet, Route, Routes, Navigate } from 'react-router-dom';
+import { LocationList } from '../locations/Locations';
+import { InventoryList } from '../inventory/Inventory';
+import { CandyContainer } from '../candy/CandyContainer';
+import { AddProductForm } from '../inventory/AddProductForm';
+import  EmployeeList  from '../employees/EmployeeList';
+import  AddEmployee  from '../employees/AddEmployee'; // Import the AddEmployee component
 
 export const EmployeeViews = () => {
   return (
@@ -23,7 +24,7 @@ export const EmployeeViews = () => {
         <Route path="candy" element={<CandyContainer />} />
         <Route path="inventory/addProduct" element={<AddProductForm />} />
         <Route path="employees" element={<EmployeeList />} />
-        <Route path="addEmployee" element={<Navigate to="/employees" replace />} />
+        <Route path="employees/addEmployee" element={<AddEmployee />} /> {/* Add new route for AddEmployee */}
       </Route>
     </Routes>
   );

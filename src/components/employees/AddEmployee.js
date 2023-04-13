@@ -1,22 +1,34 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const AddEmployee = ({ locations, onEmployeeAdded }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [locationId, setLocationId] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [payRate, setPayRate] = useState("");
+const AddEmployee = () => {
+  const [locations, setLocations] = useState([]);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [locationId, setLocationId] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [payRate, setPayRate] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      // Replace the URL with your actual API endpoint
+      const response = await fetch('http://localhost:8088/locations');
+      const data = await response.json();
+      setLocations(data);
+    };
+
+    fetchLocations();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Step 1: Create user
-    const userResponse = await fetch("http://localhost:8088/users", {
-      method: "POST",
+    // Create an object in users
+    const userResponse = await fetch('http://localhost:8088/users', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name,
@@ -24,78 +36,91 @@ const AddEmployee = ({ locations, onEmployeeAdded }) => {
         isStaff: true,
       }),
     });
-
-    if (!userResponse.ok) {
-      alert("Failed to create user.");
-      return;
-    }
-
     const newUser = await userResponse.json();
 
-    // Step 2: Create employee
-    const employeeResponse = await fetch("http://localhost:8088/employees", {
-      method: "POST",
+    // Create an object in employees with the userId from the previous step
+    await fetch('http://localhost:8088/employees', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         startDate,
-        payRate: parseFloat(payRate),
-        storeId: parseInt(locationId),
+        payRate,
+        storeId: locationId,
         userId: newUser.id,
       }),
     });
 
-    if (employeeResponse.ok) {
-      const newEmployee = await employeeResponse.json();
-      const location = locations.find((l) => l.id === parseInt(locationId));
-      onEmployeeAdded({ ...newEmployee, locationName: location.name, userName: newUser.name, userEmail: newUser.email });
+    setName('');
+    setEmail('');
+    setLocationId('');
+    setStartDate('');
+    setPayRate('');
 
-
-     // Redirect to /employee route without search parameters
-  navigate("/employees", { replace: true });
-
-} else {
-  alert("Failed to create employee.");
-}
+    // Navigate to EmployeeList page after adding employee
+    navigate('/employees');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <select value={locationId} onChange={(e) => setLocationId(e.target.value)}>
-        <option value="">Select Location</option>
-        {locations.map((location) => (
-          <option key={location.id} value={location.id}>
-            {location.name}
-          </option>
-        ))}
-      </select>
-      <input
-        type="date"
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
-      />
-      <input
-        type="number"
-        step="0.01"
-        placeholder="Pay Rate"
-        value={payRate}
-        onChange={(e) => setPayRate(e.target.value)}
-      />
-      <button type="submit">Add Employee</button>
-    </form>
+    <div>
+      <h2>Add Employee</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Location:
+          <select
+            value={locationId}
+            onChange={(e) => setLocationId(e.target.value)}
+            required
+          >
+            <option value="">Select a location</option>
+            {locations.map((location) => (
+              <option key={location.id} value={location.id}>
+                {location.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Start Date:
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Pay Rate per Hour:
+          <input
+            type="number"
+            step="0.01"
+            value={payRate}
+            onChange={(e) => setPayRate(e.target.value)}
+            required
+          />
+        </label>
+        <button type="submit">Add Employee</button>
+      </form>
+    </div>
   );
 };
 
