@@ -1,18 +1,19 @@
-export const CandySearch = ({ setSearchTerm }) => {
+export const CandySearchBar = ({ setSearchTerm }) => {
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value)
-  }
+    setSearchTerm(event.target.value);
+  };
 
   return (
     <div>
-      <label htmlFor="candySearch">What candy are you looking for?</label>
+      <label htmlFor="candy-search">What candy are you looking for?</label>
       <input
         type="text"
-        id="candySearch"
-        placeholder="Type candy name..."
+        id="candy-search"
+        placeholder="Search for candy..."
         onChange={handleSearch}
       />
     </div>
-  )
-}
+  );
+};
 
+export default CandySearchBar
