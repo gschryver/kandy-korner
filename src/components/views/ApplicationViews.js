@@ -1,10 +1,11 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { LocationList } from "../locations/Locations"
 import { InventoryList } from "../inventory/Inventory"
+import { CandyContainer } from "../candy/CandyContainer"
 import { AddProductForm } from "../inventory/AddProductForm"
 
 export const ApplicationViews = () => {
-  const isStaff = true // employee only views 
+
 
   return (
     <Routes>
@@ -18,7 +19,8 @@ export const ApplicationViews = () => {
       >
         <Route path="locations" element={<LocationList />} />
         <Route path="inventory" element={<InventoryList />} />
-        {isStaff && (<Route path="addProduct" element={<AddProductForm />} />)} {/* new product form is only displayed to employees */}
+        <Route path="candy" element={<CandyContainer />} />
+        <Route path="addProduct" element={<AddProductForm />} />
       </Route>
     </Routes>
   )
