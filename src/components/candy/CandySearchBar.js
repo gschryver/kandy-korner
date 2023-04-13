@@ -1,7 +1,8 @@
-export const CandySearchBar = ({ setSearchTerm }) => {
-  const handleSearch = (event) => {
+// Render the search bar for the user to search for candy & filter them by name 
+const CandySearchBar = ({ setSearchTerm }) => {
+  const handleSearch = (event) => { 
     setSearchTerm(event.target.value);
-  };
+  }
 
   return (
     <div>
@@ -13,7 +14,7 @@ export const CandySearchBar = ({ setSearchTerm }) => {
         onChange={handleSearch}
       />
     </div>
-  );
-};
+  )
+}
 
 export default CandySearchBar

@@ -1,32 +1,18 @@
-import { useState, useEffect } from 'react';
-import CandySearchBar from './CandySearchBar';
-import CandyList from './CandyList';
+import { useState } from 'react'
+import CandySearchBar from './CandySearchBar'
+import CandyList from './CandyList'
 
+// Container for the CandySearchBar and CandyList components
 export const CandyContainer = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [candyResults, setCandyResults] = useState([]);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch('http://localhost:8088/inventory')
-      .then((response) => response.json())
-      .then((jsonData) => setData(jsonData))
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
-
-  useEffect(() => {
-    if (data) {
-      const filteredCandy = data.filter((candy) =>
-        candy.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-      );
-      setCandyResults(filteredCandy);
-    }
-  }, [searchTerm, data]);
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div>
+      {/* The CandySearchBar component takes a prop called setSearchTerm, which will be used to update the searchTerm state in this component */}
       <CandySearchBar setSearchTerm={setSearchTerm} />
-      <CandyList candyData={candyResults} />
+
+      {/* The CandyList component takes a prop called searchTerm, which is the current value of the searchTerm state in this component */}
+      <CandyList searchTerm={searchTerm} />
     </div>
-  );
-};
+  )
+}
