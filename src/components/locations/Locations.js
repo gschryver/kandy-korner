@@ -19,14 +19,14 @@ export const LocationList = () => {
 
     return (
         <>
-            <h2 class="pageTitle">Locations</h2>
+            <h2 className="pageTitle">Locations</h2>
             {
                 locations.map(
                     (locationObject) => {
                         return <ul key={`location--${locationObject.id}`}>
-                            <li><h2 class="locationName">{locationObject.name}</h2></li>
-                            <li class="locationInfoLabel"><strong>Address:</strong> {locationObject.address}</li>
-                            <li class="locationInfoLabel"><strong>Sq. Ft:</strong> {locationObject.squareFootage}</li>
+                            <li><h2 className="locationName">{locationObject.name}</h2></li>
+                            <li className="locationInfoLabel"><strong>Address:</strong> {locationObject.address}</li>
+                            <li className="locationInfoLabel"><strong>Sq. Ft:</strong> {locationObject.squareFootage}</li>
                         </ul>
                     }
                 )
