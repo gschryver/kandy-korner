@@ -1,21 +1,46 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
 const CandyList = ({ searchTerm }) => {
-  const [candyData, setCandyData] = useState([]);
-  
+  const [candyData, setCandyData] = useState([]) // candy data
+  const [locationsData, setLocationsData] = useState([]) // locations data
+
   useEffect(() => {
+    // fetch candy data and filter by search term
     fetch("http://localhost:8088/inventory")
       .then((response) => response.json())
       .then((jsonData) => {
-        // Filters the candyData based on the search parameters
         const filteredCandy = jsonData.filter((candy) =>
           candy.name.toLowerCase().startsWith(searchTerm.toLowerCase())
         )
-        // Updates the candyData state with the filtered candyData
         setCandyData(filteredCandy)
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => console.error("Error fetching data:", error))
+
+    // fetch locations data
+    fetch("http://localhost:8088/locations")
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setLocationsData(jsonData)
+      })
+      .catch((error) => console.error("Error fetching data:", error))
   }, [searchTerm])
+
+  // function to render locations based on location ids
+  const renderLocations = (locationIds) => {
+    if (locationsData && locationIds) {
+      return locationIds.map((id) => {
+        const location = locationsData.find((loc) => loc.id === id)
+        return location ? <li key={location.id}>{location.name}</li> : null
+      })
+    }
+    return null
+  }
+
+  // displays an alert window with the locations where the candy is available
+  const handleClick = (locationIds) => {
+    const locationsList = renderLocations(locationIds)
+    alert(`Available at:\n${locationsList.map((loc) => loc.props.children).join("\n")}`)
+  }
 
   return (
     <div>
@@ -24,6 +49,7 @@ const CandyList = ({ searchTerm }) => {
         {candyData.map((candy) => (
           <li key={candy.id}>
             {candy.name} - ${candy.pricePerUnit.toFixed(2)}
+            <button onClick={() => handleClick(candy.locationIds)}>Show me where</button>
           </li>
         ))}
       </ul>
