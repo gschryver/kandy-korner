@@ -22,13 +22,13 @@ export const EmployeeNav = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/candy">Find Candy</Link>
             </li>
-
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/employees">Employees</Link>
-            </li>
             
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/employees/addEmployee">Hire Employee</Link>
+            </li>
+
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/employees">Employees</Link>
             </li>
 
             <li className="navbar__item active">
