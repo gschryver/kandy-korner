@@ -65,7 +65,7 @@ const AddEmployee = () => {
 
   return (
     <div>
-      <h2>Add Employee</h2>
+      <h2 className="employeeTitle">Add Employee</h2>
       <form onSubmit={handleSubmit}>
         <label className="formLabel">
           Name:

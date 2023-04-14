@@ -29,11 +29,11 @@ const EmployeeList = () => {
       <article className="employees">
         {employees.map(employee => (
           <section className="employee" key={employee.id}>
-            <div>Name: {employee.name}</div>
-            <div>Email: {employee.email}</div>
-            <div>Location: {employee.location}</div>
-            <div>Start Date: {employee.startDate}</div>
-            <div>Pay Rate: ${parseFloat(employee.payRate).toFixed(2)}</div>
+            <div><strong>Name:</strong> {employee.name}</div>
+            <div><strong>Email:</strong>  {employee.email}</div>
+            <div><strong>Location:</strong>  {employee.location}</div>
+            <div><strong>Start Date:</strong>  {employee.startDate}</div>
+            <div><strong>Pay Rate:</strong> ${parseFloat(employee.payRate).toFixed(2)}</div>
           </section>
         ))}
       </article>

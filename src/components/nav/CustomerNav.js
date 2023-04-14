@@ -23,7 +23,7 @@ export const CustomerNav = () => {
                 <>
                     {/* Display the user's email */}
                     <li className="navbar__item">
-                        <span className="navbar__user-email">Logged in as: {currentUser.email}</span>
+                        <span className="navbar__user-email"><strong>Logged in as:</strong>  {currentUser.email}</span>
                     </li>
 
                     {/* If a user is logged in, render a "Logout" link */}
