@@ -14,9 +14,9 @@ const EmployeeList = () => {
             name: employee.user.name,
             email: employee.user.email,
             location: employee.location.name,
-          }));
+          }))
 
-          setEmployees(employeesWithUserAndLocation);
+          setEmployees(employeesWithUserAndLocation)
         })
     }
 
@@ -38,7 +38,7 @@ const EmployeeList = () => {
         ))}
       </article>
     </div>
-  );
-};
+  )
+}
 
 export default EmployeeList
