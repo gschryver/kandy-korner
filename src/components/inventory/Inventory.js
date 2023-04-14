@@ -28,8 +28,8 @@ export const InventoryList = () => {
     return (
         <>
           <h2 className="pageTitle">Inventory</h2>
-          <button onClick={() => setShowTopPriced(!showTopPriced)}>Top Priced</button> {/* toggle button */}
-          {/* }Map over the filteredInventory array and display the inventory objects */}
+          <button className="top-priced-button" onClick={() => setShowTopPriced(!showTopPriced)}>Sort by Top Priced</button> {/* toggle button */}
+          {/* Map over the filteredInventory array and display the inventory objects */}
           {filteredInventory.map(
             (inventoryObject) => {
             const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(inventoryObject.pricePerUnit); // format price as $0.00 

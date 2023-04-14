@@ -1,0 +1,32 @@
+.candy-name {
+    font-weight: bold;
+    font-size: 22px;
+    font-family: "Patua One", serif;
+}
+
+.candy-price {
+    font-size: 18px;
+}
+
+.candy-title {
+    font-size: 30px;
+}
+
+.candy-button {
+    margin-left: 10px;
+    background: lightsalmon;
+    border: 1px solid orangered;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.candy-search-bar {
+    margin-top: 20px;
+}
+
+.candy-input {
+    margin-left: 10px;
+    font-size: 18px;
+}

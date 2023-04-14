@@ -38,10 +38,12 @@ export const AddProductForm = () => {
   }
 
   return (
+    <div>
+      <h2 className="addCandyTitle">Add Candy</h2>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name">Product name:</label>
-        <input
+        <label className="candyFormLabel" htmlFor="name">Product name:</label>
+        <input className="candyFormInput"
           id="name"
           type="text"
           value={name}
@@ -50,8 +52,8 @@ export const AddProductForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="typeId">Product type:</label>
-        <select
+      <label className="candyFormLabel" htmlFor="typeId">Product type:</label>
+        <select className="candyFormInput"
           id="typeId"
           value={typeId}
           onChange={(event) => setTypeId(event.target.value)}
@@ -67,8 +69,8 @@ export const AddProductForm = () => {
         </select>
       </div>
       <div>
-        <label htmlFor="price">Price:</label>
-        <input
+      <label className="candyFormLabel" htmlFor="price">Price:</label>
+        <input className="candyFormInput"
           id="price"
           type="number"
           step="0.01"
@@ -78,7 +80,8 @@ export const AddProductForm = () => {
           required
         />
       </div>
-      <button type="submit">Add Product</button>
+      <button className="candyButton" type="submit">Add Product</button>
     </form>
+    </div>
   )
 }

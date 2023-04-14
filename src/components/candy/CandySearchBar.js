@@ -5,9 +5,9 @@ const CandySearchBar = ({ setSearchTerm }) => {
   }
 
   return (
-    <div>
-      <label htmlFor="candy-search">What candy are you looking for?</label>
-      <input
+    <div className="candy-search-bar">
+      <label className="candy-name" htmlFor="candy-search">What candy are you looking for?</label>
+      <input className="candy-input"
         type="text"
         id="candy-search"
         placeholder="Search for candy..."

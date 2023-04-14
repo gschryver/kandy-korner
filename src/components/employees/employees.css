@@ -1,0 +1,43 @@
+.employees {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.employee {
+    background-color: lightsalmon;
+    border: 1px dotted orangered;
+    color: black;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    width: 20%;
+}
+
+.employee-title {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.formLabel {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: "Patua One", serif;
+    font-size: 22px;
+}
+
+.formInput {
+    margin-bottom: 20px;
+    display: block;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.employee-button {
+    background: lightsalmon;
+    border: 1px solid orangered;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
