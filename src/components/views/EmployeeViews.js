@@ -3,6 +3,8 @@ import { LocationList } from '../locations/Locations';
 import { InventoryList } from '../inventory/Inventory';
 import { CandyContainer } from '../candy/CandyContainer';
 import { AddProductForm } from '../inventory/AddProductForm';
+import { CustomerList } from '../customers/CustomerList';
+import { CustomerDetails } from '../customers/CustomerDetails';
 import  EmployeeList  from '../employees/EmployeeList';
 import  AddEmployee  from '../employees/AddEmployee'; // Import the AddEmployee component
 
@@ -25,6 +27,8 @@ export const EmployeeViews = () => {
         <Route path="inventory/addProduct" element={<AddProductForm />} />
         <Route path="employees" element={<EmployeeList />} />
         <Route path="employees/addEmployee" element={<AddEmployee />} /> {/* Add new route for AddEmployee */}
+        <Route path="customers" element={<CustomerList />} />
+        <Route path="customers/:customerId" element={<CustomerDetails />} />
       </Route>
     </Routes>
   );

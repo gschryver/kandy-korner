@@ -30,8 +30,10 @@ export const EmployeeNav = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/employees/addEmployee">Hire Employee</Link>
             </li>
-            
 
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/customers">Customers</Link>
+            </li>
 
 
             {currentUser ? (
