@@ -19,3 +19,15 @@
     justify-content: center;
     font-size: 30px;
 }
+
+.formLabel {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: "Patua One", serif;
+    font-size: 18px;
+}
+
+.formInput {
+    margin-bottom: 20px;
+    display: block;
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './employees.css'
 
 const AddEmployee = () => {
   const [locations, setLocations] = useState([])
@@ -66,27 +67,27 @@ const AddEmployee = () => {
     <div>
       <h2>Add Employee</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="formLabel">
           Name:
-          <input
+          <input className="formInput" 
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)} // Updates the name state variable
             required
           />
         </label>
-        <label>
+        <label className="formLabel">
           Email:
-          <input
+          <input className="formInput"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)} // Updates the email state variable
             required
           />
         </label>
-        <label>
+        <label className="formLabel">
           Location:
-          <select
+          <select className="formInput"
             value={locationId}
             onChange={(e) => setLocationId(e.target.value)} // Updates the locationId state variable
             required
@@ -99,18 +100,18 @@ const AddEmployee = () => {
             ))}
           </select>
         </label>
-        <label>
+        <label className="formLabel">
           Start Date:
-          <input
+          <input className="formInput"
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)} // Updates the startDate state variable
             required
           />
         </label>
-        <label>
-          Pay Rate per Hour:
-          <input
+        <label className="formLabel">
+          Hourly Pay Rate:
+          <input className="formInput"
             type="number"
             step="0.01"
             value={payRate}
