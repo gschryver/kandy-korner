@@ -6,8 +6,8 @@
 }
 
 .employee {
-    background-color: lightblue;
-    border: 1px dotted darkblue;
+    background-color: lightsalmon;
+    border: 1px dotted orangered;
     color: black;
     padding: 0.7rem;
     margin: 0.5rem 0;
@@ -24,10 +24,20 @@
     margin-bottom: 20px;
     font-weight: bold;
     font-family: "Patua One", serif;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .formInput {
     margin-bottom: 20px;
     display: block;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.employee-button {
+    background: lightsalmon;
+    border: 1px solid orangered;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
 }

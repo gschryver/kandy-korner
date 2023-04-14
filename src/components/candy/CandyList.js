@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react"
+import "./candy.css"
 
 const CandyList = ({ searchTerm }) => {
   const [candyData, setCandyData] = useState([]) // candy data
   const [locationsData, setLocationsData] = useState([]) // locations data
 
   useEffect(() => {
-    // Check if searchTerm exists before trying to access its properties
-    if (searchTerm) {
-      // fetch candy data and filter by search term
-      fetch("http://localhost:8088/inventory")
-        .then((response) => response.json())
-        .then((jsonData) => {
-          const filteredCandy = jsonData.filter((candy) =>
-            candy.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-          );
-          setCandyData(filteredCandy);
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-    }
-  
+    // fetch candy data and filter by search term if searchTerm exists
+    fetch("http://localhost:8088/inventory")
+      .then((response) => response.json())
+      .then((jsonData) => {
+        const filteredCandy = searchTerm // filter candy by search term
+          ? jsonData.filter((candy) =>
+              candy.name.toLowerCase().startsWith(searchTerm.toLowerCase()) // allow lowercase and uppercase letters
+            )
+          : jsonData;
+        setCandyData(filteredCandy);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+
     // fetch locations data
     fetch("http://localhost:8088/locations")
       .then((response) => response.json())
@@ -27,7 +27,6 @@ const CandyList = ({ searchTerm }) => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, [searchTerm]);
-  
 
   // function to render locations based on location ids
   const renderLocations = (locationIds) => {
@@ -39,21 +38,24 @@ const CandyList = ({ searchTerm }) => {
     }
     return null
   }
-
+  
   // displays an alert window with the locations where the candy is available
   const handleClick = (locationIds) => {
     const locationsList = renderLocations(locationIds)
     alert(`Available at:\n${locationsList.map((loc) => loc.props.children).join("\n")}`)
   }
 
+  {/* show me where button will only display if the candy is being filtered by search term */}
   return (
     <div>
-      <h2>Available Candy:</h2>
+      <h2 className="candy-title">Available Candy:</h2>
       <ul>
         {candyData.map((candy) => (
           <li key={candy.id}>
-            {candy.name} - ${candy.pricePerUnit.toFixed(2)}
-            <button onClick={() => handleClick(candy.locationIds)}>Show me where</button>
+            <span className="candy-name">{candy.name}</span> - <span className="candy-price">${candy.pricePerUnit.toFixed(2)}</span>
+            {searchTerm && ( 
+              <button className="candy-button" onClick={() => handleClick(candy.locationIds)}>Show me where</button>
+            )}
           </li>
         ))}
       </ul>
