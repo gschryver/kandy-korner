@@ -1,66 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AddEmployee = () => {
-  const [locations, setLocations] = useState([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [locationId, setLocationId] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [payRate, setPayRate] = useState('');
-  const navigate = useNavigate();
+  const [locations, setLocations] = useState([])
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [locationId, setLocationId] = useState('')
+  const [startDate, setStartDate] = useState('')
+  const [payRate, setPayRate] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const fetchLocations = async () => {
-      // Replace the URL with your actual API endpoint
-      const response = await fetch('http://localhost:8088/locations');
-      const data = await response.json();
-      setLocations(data);
-    };
+    const fetchLocations = () => {
+      fetch('http://localhost:8088/locations')
+        .then(response => response.json())
+        .then(data => setLocations(data))
+    }
 
-    fetchLocations();
-  }, []);
+    fetchLocations()
+  }, [])
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = (e) => { // Handles the form submission
+    e.preventDefault()
 
-    // Create an object in users
-    const userResponse = await fetch('http://localhost:8088/users', {
+    fetch('http://localhost:8088/users', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         name,
         email,
-        isStaff: true,
-      }),
-    });
-    const newUser = await userResponse.json();
-
-    // Create an object in employees with the userId from the previous step
-    await fetch('http://localhost:8088/employees', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        startDate,
-        payRate,
-        storeId: locationId,
-        userId: newUser.id,
-      }),
-    });
-
-    setName('');
-    setEmail('');
-    setLocationId('');
-    setStartDate('');
-    setPayRate('');
-
-    // Navigate to EmployeeList page after adding employee
-    navigate('/employees');
-  };
+        isStaff: true
+      })
+    })
+    .then(response => response.json())
+    .then(newUser => {
+      fetch('http://localhost:8088/employees', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        // The new employee object
+        body: JSON.stringify({
+          startDate,
+          payRate,
+          locationId,
+          userId: newUser.id
+        })
+      })
+      .then(() => {
+        // Clear the form
+        setName('')
+        setEmail('')
+        setLocationId('')
+        setStartDate('')
+        setPayRate('')
+        // Navigate to the employee list
+        navigate('/employees')
+      })
+    })
+  }
 
   return (
     <div>
@@ -71,7 +71,7 @@ const AddEmployee = () => {
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)} // Updates the name state variable
             required
           />
         </label>
@@ -80,7 +80,7 @@ const AddEmployee = () => {
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)} // Updates the email state variable
             required
           />
         </label>
@@ -88,7 +88,7 @@ const AddEmployee = () => {
           Location:
           <select
             value={locationId}
-            onChange={(e) => setLocationId(e.target.value)}
+            onChange={(e) => setLocationId(e.target.value)} // Updates the locationId state variable
             required
           >
             <option value="">Select a location</option>
@@ -104,7 +104,7 @@ const AddEmployee = () => {
           <input
             type="date"
             value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
+            onChange={(e) => setStartDate(e.target.value)} // Updates the startDate state variable
             required
           />
         </label>
@@ -114,14 +114,14 @@ const AddEmployee = () => {
             type="number"
             step="0.01"
             value={payRate}
-            onChange={(e) => setPayRate(e.target.value)}
+            onChange={(e) => setPayRate(e.target.value)} // Updates the payRate state variable     
             required
           />
         </label>
         <button type="submit">Add Employee</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AddEmployee;
+export default AddEmployee // Using export default is more convenient when we only need to export a single object or function from a module
