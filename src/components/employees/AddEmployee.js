@@ -50,7 +50,7 @@ const AddEmployee = () => {
           startDate, 
           payRate, 
           locationId, 
-          userId: newUser.id // set the 'userId' property to the id of the newly created user object
+          userId: newUser.id // set the descriptive 'userId' property to the mapped id of the newly created user object
         })
       })
       .then(() => { 
