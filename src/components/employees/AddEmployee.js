@@ -38,15 +38,15 @@ const AddEmployee = () => {
         isStaff: true 
       })
     })
-    .then(response => response.json()) // parse the response from the server as a JSON object
-    .then(newUser => { // retrieve the newly created user object from the previous response and store it in a variable
+    .then(response => response.json()) // parse the response (user) from the server as a JSON object 
+    .then(newUser => { // retrieve the newly created user object from the previous response and store it in a variable (newUser)
       fetch('http://localhost:8088/employees', { // request to the URL for creating a new employee on the server
         method: 'POST', // create a new employee
         headers: {
           'Content-Type': 'application/json' 
         },
         // creates a new employee object with the data to be sent to the server
-        body: JSON.stringify({
+        body: JSON.stringify({ // this will be converted to a JSON string and sent to the server
           startDate, 
           payRate, 
           locationId, 
