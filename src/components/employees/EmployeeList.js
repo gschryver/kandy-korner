@@ -10,7 +10,7 @@ const EmployeeList = () => {
         .then(response => response.json())
         .then(data => {
           const employeesWithUserAndLocation = data.map(employee => ({ // Maps the employee data to a new object with the user and location data added
-            ...employee,
+            ...employee, // spread operator to copy the properties of the employee object
             name: employee.user.name,
             email: employee.user.email,
             location: employee.location.name,

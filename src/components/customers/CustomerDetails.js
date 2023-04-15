@@ -9,7 +9,7 @@ export const CustomerDetails = () => {
 
   // fetches the customer with the specified ID and the associated user object
   useEffect(() => {
-    fetch(`http://localhost:8088/customers/${customerId}?_expand=user`)
+    fetch(`http://localhost:8088/customers/${customerId}?_expand=user`) // fetches the customer with the specified ID and the associated user object
       .then(res => res.json())
       .then(setCustomer)
   }, [customerId])

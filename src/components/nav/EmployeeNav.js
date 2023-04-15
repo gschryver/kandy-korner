@@ -48,8 +48,8 @@ export const EmployeeNav = () => {
                         <Link className="navbar__link"
                             to=""
                             onClick={() => {
-                                localStorage.removeItem("kandy_user");
-                                navigate("/", { replace: true });
+                                localStorage.removeItem("kandy_user")
+                                navigate("/", { replace: true })
                             }}
                         >Logout
                         </Link>

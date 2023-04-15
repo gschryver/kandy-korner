@@ -1,7 +1,7 @@
 // Render the search bar for the user to search for candy & filter them by name 
 const CandySearchBar = ({ setSearchTerm }) => {
   const handleSearch = (event) => { 
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value)
   }
 
   return (

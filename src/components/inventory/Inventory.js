@@ -32,7 +32,7 @@ export const InventoryList = () => {
           {/* Map over the filteredInventory array and display the inventory objects */}
           {filteredInventory.map(
             (inventoryObject) => {
-            const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(inventoryObject.pricePerUnit); // format price as $0.00 
+            const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(inventoryObject.pricePerUnit) // format price as $0.00 
               return (
                 <ul key={`inventory--${inventoryObject.id}`}>
                   <li>

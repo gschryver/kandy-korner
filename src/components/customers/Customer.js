@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom" // Imports the Link component from react-router-dom to create links to other views
+import { Link } from "react-router-dom" 
 
-// Create a functional component called Customer that accepts a customer object as a prop
 export const Customer = ({ customer }) => {
     return (
       <div className="customerLink"> 

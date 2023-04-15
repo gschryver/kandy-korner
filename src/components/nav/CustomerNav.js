@@ -19,7 +19,7 @@ export const CustomerNav = () => {
                 <Link className="navbar__link" to="/candy">Find Candy</Link>
             </li>
 
-            {currentUser ? (
+            {currentUser ? ( // If a user is logged in, render the following elements
                 <>
                     {/* Display the user's email */}
                     <li className="navbar__item">
@@ -31,8 +31,8 @@ export const CustomerNav = () => {
                         <Link className="navbar__link"
                             to=""
                             onClick={() => {
-                                localStorage.removeItem("kandy_user");
-                                navigate("/", { replace: true });
+                                localStorage.removeItem("kandy_user")
+                                navigate("/", { replace: true })
                             }}
                         >Logout
                         </Link>

@@ -14,19 +14,19 @@ const CandyList = ({ searchTerm }) => {
           ? jsonData.filter((candy) =>
               candy.name.toLowerCase().startsWith(searchTerm.toLowerCase()) // allow lowercase and uppercase letters
             )
-          : jsonData;
-        setCandyData(filteredCandy);
+          : jsonData
+        setCandyData(filteredCandy)
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => console.error("Error fetching data:", error))
 
     // fetch locations data
     fetch("http://localhost:8088/locations")
       .then((response) => response.json())
       .then((jsonData) => {
-        setLocationsData(jsonData);
+        setLocationsData(jsonData)
       })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, [searchTerm]);
+      .catch((error) => console.error("Error fetching data:", error))
+  }, [searchTerm])
 
   // function to render locations based on location ids
   const renderLocations = (locationIds) => {

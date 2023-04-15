@@ -20,7 +20,7 @@ export const AddProductForm = () => {
 
   // form submission
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     // object containing the name, typeId, and price of the product
     const requestOptions = {
@@ -29,7 +29,7 @@ export const AddProductForm = () => {
       body: JSON.stringify({
         name,
         typeId,
-        pricePerUnit: parseFloat(price),
+        pricePerUnit: parseFloat(price), // converts the price to a float so that it can be stored in the database as a decimal value
       }),
     }
 
@@ -73,8 +73,8 @@ export const AddProductForm = () => {
         <input className="candyFormInput"
           id="price"
           type="number"
-          step="0.01"
-          min="0"
+          step="0.01" // allows the user to enter a decimal value and increments the value by 0.01 or 1 cent
+          min="0" // sets the minimum value to 0 that the user can enter
           value={price}
           onChange={(event) => setPrice(event.target.value)}
           required
