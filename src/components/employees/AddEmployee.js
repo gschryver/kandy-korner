@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './employees.css'
 
-// we use multiple state variables to store the values of the form fields as it is more efficient than using a single state variable to store the values of all the form fields
+// From the React docs: “we recommend to split state into multiple state variables based on which values tend to change together”
+// imo this is easier to manage 
+// could possibly use reducer?? in the future for more complex state management 8) 
 const AddEmployee = () => {
   const [locations, setLocations] = useState([]) // state variable to store the list of locations
   const [name, setName] = useState('') // state variable to store the name of the employee
