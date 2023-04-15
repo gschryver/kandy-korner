@@ -119,7 +119,7 @@ const AddEmployee = () => {
           Hourly Pay Rate:
           <input className="formInput"
             type="number"
-            step="0.01"
+            step="0.01" // allows the user to enter a decimal value and increments the value by 0.01 or 1 cent
             value={payRate}
             onChange={(e) => setPayRate(e.target.value)}      
             required
