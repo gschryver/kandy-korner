@@ -29,6 +29,7 @@ const AddEmployee = () => {
 
     // object creation for the new employee and user
     // we're going to do all of this server-side, so we need to make multiple requests to the server
+    // create user > grab user object > save in variable > create employee > pass user id to employee object > save employee object
     fetch('http://localhost:8088/users', { // request to the URL for creating a new user on the server
       method: 'POST', // create a new user 
       headers: {
