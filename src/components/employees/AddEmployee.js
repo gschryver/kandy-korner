@@ -6,12 +6,12 @@ import './employees.css'
 // imo this is easier to manage 
 // could possibly use reducer?? in the future for more complex state management 8) 
 const AddEmployee = () => {
-  const [locations, setLocations] = useState([]) // state variable to store the list of locations
-  const [name, setName] = useState('') // state variable to store the name of the employee
-  const [email, setEmail] = useState('') // state variable to store the email of the employee
-  const [locationId, setLocationId] = useState('') // state variable to store the location id of the employee
-  const [startDate, setStartDate] = useState('') // state variable to store the start date of the employee
-  const [payRate, setPayRate] = useState('') // state variable to store the pay rate of the employee
+  const [locations, setLocations] = useState([]) 
+  const [name, setName] = useState('') 
+  const [email, setEmail] = useState('') 
+  const [locationId, setLocationId] = useState('') 
+  const [startDate, setStartDate] = useState('') 
+  const [payRate, setPayRate] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
