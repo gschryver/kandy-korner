@@ -25,6 +25,8 @@ const [employees, setEmployees] = useState([])
 
     // functionality to 'fire' an employee >:( 
     // end stage capitalism, baby 
+    // we're also adding the ability to delete the user because we're a capitalist pig
+    // oink oink 
     const fireEmployee = (employeeId) => { // takes the employee id as an argument
       const employee = employees.find((employee) => employee.id === employeeId) // find the employee in the array of employees
       const userId = employee.user.id // get the user id from the employee object
