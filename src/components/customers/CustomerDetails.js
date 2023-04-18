@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 export const CustomerDetails = () => {
   const { customerId } = useParams() // extracts the 'customerId' parameter from the URL
   const [customer, setCustomer] = useState("") // initializes state for the customer
-  const [loyaltyNumber, setLoyaltyNumber] = useState("") // initializes state for the loyalty number
+  const [loyaltyNumber, setLoyaltyNumber] = useState(null) // initializes state for the loyalty number
 
   // fetches the customer with the specified ID and the associated user object
   const fetchCustomer = () => {
@@ -18,6 +18,11 @@ export const CustomerDetails = () => {
     useEffect(() => {
       fetchCustomer() 
     }, [customerId]) // the dependency array ensures that the fetchCustomer function is only called when the customerId changes
+
+    // reset form after the loyalty number is updated
+    const resetForm = () => {
+      setLoyaltyNumber("")
+    }
 
     // updates the customer's loyalty number
     const handleUpdateLoyaltyNumber = (event) => {
@@ -37,6 +42,7 @@ export const CustomerDetails = () => {
         console.log(updatedCustomer)
         // then we are going to fetch the customer again to ensure that the customer info & associated user object is always up to date in state 
           fetchCustomer()
+          resetForm()
       })
     } 
       
