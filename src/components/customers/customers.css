@@ -15,10 +15,14 @@
     text-align: center;
 }
 
-.customersTitle {
+.customersTitle, .loyaltyHeading {
     display: flex;
     justify-content: center;
     font-size: 30px;
+}
+
+.loyaltyHeading {
+    margin-top: 40px;
 }
 
 .customerDetails {
@@ -39,4 +43,14 @@
     font-size: 20px;
     font-weight: bold;
     color: darkred;
+}
+
+.loyaltyForm {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.updateLoyaltyButton {
+    display: block;
+    margin: 0 auto;
 }
