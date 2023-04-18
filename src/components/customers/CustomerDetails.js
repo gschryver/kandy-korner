@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 export const CustomerDetails = () => {
   const { customerId } = useParams() // extracts the 'customerId' parameter from the URL
   const [customer, setCustomer] = useState("") // initializes state for the customer
-  const [loyaltyNumber, setLoyaltyNumber] = useState(null) // initializes state for the loyalty number
+  const [loyaltyNumber, setLoyaltyNumber] = useState("") // initializes state for the loyalty number
 
   // fetches the customer with the specified ID and the associated user object
   const fetchCustomer = () => {
