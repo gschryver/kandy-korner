@@ -19,6 +19,11 @@ export const CustomerDetails = () => {
       fetchCustomer() 
     }, [customerId]) // the dependency array ensures that the fetchCustomer function is only called when the customerId changes
 
+    // reset form after the loyalty number is updated
+    const resetForm = () => {
+      setLoyaltyNumber("")
+    }
+
     // updates the customer's loyalty number
     const handleUpdateLoyaltyNumber = (event) => {
       event.preventDefault()
@@ -37,6 +42,7 @@ export const CustomerDetails = () => {
         console.log(updatedCustomer)
         // then we are going to fetch the customer again to ensure that the customer info & associated user object is always up to date in state 
           fetchCustomer()
+          resetForm()
       })
     } 
       
