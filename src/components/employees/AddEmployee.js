@@ -21,7 +21,7 @@ const AddEmployee = () => {
         .then(data => setLocations(data))
     }
 
-    fetchLocations()
+    fetchLocations() // call the function to fetch the locations
   }, []) 
 
   const handleSubmit = (e) => { // triggers when the form is submitted
