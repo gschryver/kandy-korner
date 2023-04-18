@@ -19,6 +19,10 @@ export const CustomerNav = () => {
                 <Link className="navbar__link" to="/candy">Find Candy</Link>
             </li>
 
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/orders">My Orders</Link>
+            </li>
+
             {currentUser ? ( // If a user is logged in, render the following elements
                 <>
                     {/* Display the user's email */}
