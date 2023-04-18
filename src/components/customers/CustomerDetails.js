@@ -17,8 +17,8 @@ export const CustomerDetails = () => {
     return customer && (
         <div className="customerDetails">
           <h2>{customer.user.name}</h2> 
-          <p class="customerLabel"><strong>Email:</strong> {customer.user.email}</p>
-          <p class="customerLabel"><strong>Loyalty Number:</strong> {customer.loyaltyNumber}</p>  
+          <p className="customerLabel"><strong>Email:</strong> {customer.user.email}</p>
+          <p className="customerLabel"><strong>Loyalty Number:</strong> {customer.loyaltyNumber}</p>  
         </div>
       )
 }
