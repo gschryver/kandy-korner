@@ -45,3 +45,13 @@
 .employeeTitle {
     font-size: 30px;
 }
+
+.fireEmployeeButton {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    background: red;
+    border: 1px solid darkred;
+    color: #fff;
+    padding: 5px;
+}
